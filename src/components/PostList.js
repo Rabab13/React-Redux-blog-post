@@ -5,12 +5,21 @@ import UserHeader from './UserHeader'
 
 
 class PostList extends Component {
+
+    state = {
+        searchTerm: ''
+    };
+
     componentDidMount(){
         this.props.fetchPosts()
     }
 
     renderList(){
-        return this.props.posts.map( post =>{
+        const filteredPosts = this.props.posts.filter((post) =>
+            post.title.includes(this.state.searchTerm) ||
+            post.body.includes(this.state.searchTerm)
+        );
+        return filteredPosts.map( post =>{
             return (
                 <div key={post.id} className="item">
                     <i className="large middle aligned icon user"/>
@@ -29,8 +38,16 @@ class PostList extends Component {
     render() {
         console.log(this.props.posts)
         return (
+            <div>
+            <input className='Search-bar'
+                type="text"
+                placeholder="Search-bar"
+                value={this.state.searchTerm}
+                onChange={(e) => this.setState({ searchTerm: e.target.value })}
+            />
             <div className="ui relaxed divided list">
                 {this.renderList()}
+            </div>
             </div>
         )
     }
