@@ -113,3 +113,19 @@ h2 {
 .description p {
   margin-bottom: 5px;
 }
+.Search-bar{
+  display: table-cell;
+    /* width: 100%; */
+  text-transform: uppercase;
+  color: #fc4217;
+  background-color: #ffffff;
+  font-family: 'Antonio';
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  margin: 5px 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  border-radius: 5px;
+}
